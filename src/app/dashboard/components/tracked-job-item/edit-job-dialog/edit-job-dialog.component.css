@@ -1,0 +1,4 @@
+.mat-mdc-dialog-container.mat-mdc-dialog-content.dialog-content {
+  display: flex;
+  gap: 24px;
+}

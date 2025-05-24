@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Edit job dialog</h2>
+
+<mat-dialog-content class="mat-mdc-dialog-container mat-mdc-dialog-content dialog-content">
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="description" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Project type:</mat-label>
+
+    <mat-select [(ngModel)]="projectType">
+      @for (project of projects$ | async; track project.id) {
+        <mat-option [value]="project.id">
+          {{ project.name }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex gap-4">
+  <button mat-flat-button (click)="onSubmit()">Confirm</button>
+
+  <button mat-stroked-button (click)="onClose()">
+    Close
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,7 @@
+.mat-raised-button.menu-option-desktop {
+  @apply hidden mt-2 md:block;
+}
+
+.mat-raised-button.menu-option-mobile {
+  @apply block md:hidden;
+}

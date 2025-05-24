@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Edit project</h2>
+
+<mat-dialog-content>
+  <div>
+    @for (project of projects$ | async; track project.id) {
+      <span [ngClass]="{ 'is-hidden': staticProjects.id === project.id }">
+        <button class="button-delete" (click)="onDeleteProject(project.id)">
+          <mat-icon class="text-blue-primary" fontIcon="delete" />
+        </button>
+
+        <input
+          class="p-1 w-full border border-blue-primary rounded-md"
+          [id]="'project' + project.id"
+          name="project"
+          type="text"
+          [(ngModel)]="project.name"
+        />
+      </span>
+    }
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex gap-4">
+  <button mat-flat-button (click)="onClose()">Confirm</button>
+
+  <button mat-stroked-button (click)="onClose()">
+    Close
+  </button>
+</mat-dialog-actions>

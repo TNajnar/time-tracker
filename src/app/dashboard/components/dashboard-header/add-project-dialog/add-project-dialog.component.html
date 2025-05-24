@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Add new project</h2>
+
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>New project name</mat-label>
+
+    <input matInput [(ngModel)]="newProject" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions class="flex gap-4">
+  <button mat-flat-button [mat-dialog-close]="newProject()">Confirm</button>
+
+  <button mat-stroked-button (click)="onClose()">
+    Close
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,9 @@
+.nav-link {
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.nav-link.active {
+  border-color: theme('colors.blue-primary');
+  color: theme('colors.blue-primary');
+}

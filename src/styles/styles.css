@@ -3,3 +3,55 @@
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
+
+@layer base {
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    min-width: 320px;
+    background-color: #FFF; /* Light Steel Blue b1b4ba*/
+    font-size: 16px;
+    font-size: 100%;
+    color: #000;  /* Light Cyan 0a0983 */
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  
+  html, body, .mat-typography {
+    font-size: 16px; /* Adjust this size as needed */
+    font-family: Arial, sans-serif;
+  }
+
+  /* Always show scrollbar to prevent layout shifts between pages. */
+  body {
+    overflow-y: scroll;
+  }
+}
+
+@layer utilities {
+  .page-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 1224px) {
+      max-width: 1224px;
+    }
+  }
+}
+
+@layer components {
+  .mat-raised-button.primary-button {
+    border-radius: 6px;
+  }
+
+  .mat-raised-button.icon-circle-button {
+    border-radius: 100%;
+  }
+}

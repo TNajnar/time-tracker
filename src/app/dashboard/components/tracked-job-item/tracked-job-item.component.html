@@ -1,0 +1,54 @@
+<span class="order-1 md:order-first font-bold text-blue-primary text-xl text-gray-900">{{ job.description }}</span>
+
+<span class="order-5 md:order-2">
+  <strong class="text-blue-primary">Start Time:</strong>
+  {{ job.startTime | date: 'HH:mm' }}
+</span>
+
+<span class="order-6 md:order-3">
+  <strong class="text-blue-primary">End Time:</strong>
+  {{ job.endTime ? (job.endTime | date: 'HH:mm') : '-' }}
+</span>
+
+<span class="order-7 md:order-4">
+  <strong class="text-blue-primary">Elapsed Time:</strong>
+  {{ job.elapsedTime }}
+</span>
+
+<button
+  class="order-2 md:order-5"
+  mat-icon-button
+  [attr.aria-label]="job.isActive ? 'Pause job' : 'Start job'"
+  (click)="toggleJobStatus()"
+>
+  <mat-icon [fontIcon]="job.isActive ? 'pause' : 'play_arrow'" />
+</button>
+
+<button
+  class="order-3 md:order-6"
+  mat-icon-button
+  aria-label="Options"
+  [matMenuTriggerFor]="menu"
+>
+  <mat-icon fontIcon="more_vert" />
+</button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="editJob()">
+    <mat-icon fontIcon="edit" />
+    Edit Job
+  </button>
+
+  <button mat-menu-item (click)="deleteJob()">
+    <mat-icon fontIcon="delete" />
+    Remove Job
+  </button>
+</mat-menu>
+
+<span
+  class="order-4 md:order-7 justify-self-center w-4 h-4 rounded-full shadow-md"
+  [ngClass]="{
+    'bg-green-500 animate-pulse': job.isActive,
+    'bg-red-600': !job.isActive
+  }"
+></span>

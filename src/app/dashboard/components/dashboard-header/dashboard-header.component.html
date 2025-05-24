@@ -1,0 +1,66 @@
+<mat-form-field class="w-full">
+  <mat-label for="jobDescription">What are you working on?</mat-label>
+
+  <input
+    matInput
+    type="text"
+    name="jobDescription"
+    id="jobDescription"
+    maxlength="20"
+    [(ngModel)]="jobDescription"
+  />
+</mat-form-field>
+
+<div class="flex gap-4">
+  <mat-form-field class="w-full">
+    <mat-label for="project">Project you working on?</mat-label>
+  
+    <mat-select [(ngModel)]="selectedProjectType" name="projectType">
+      @for (projectType of projectTypes$ | async; track projectType.id) {
+        <mat-option [value]="projectType.id">{{ projectType.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    class="mat-raised-button menu-option-desktop"
+    mat-icon-button
+    aria-label="Project options"
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon fontIcon="more_vert" />
+  </button>
+</div>
+
+<div class="flex flex-row md:flex-col items-center gap-2">
+  <button
+    mat-icon-button
+    class="mat-raised-button menu-option-mobile"
+    aria-label="Project options"
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon fontIcon="more_vert" />
+  </button>
+
+  <button
+    mat-fab
+    class="mat-raised-button icon-circle-button justify-self-end"
+    title="Start Time Entry"
+    aria-label="Start Time Entry"
+    (click)="onStartClick()"
+  >
+    <mat-icon fontIcon="play_arrow" />
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="addNewProject()">
+    <mat-icon fontIcon="add" />
+    Add new project
+  </button>
+
+  <button mat-menu-item (click)="onEditProjects()">
+    <mat-icon fontIcon="edit" />
+    Edit projects
+  </button>
+</mat-menu>

@@ -1,0 +1,50 @@
+<h2 class="text-3xl font-bold pb-5 underline">Login</h2>
+
+<div class="flex flex-col gap-5 p-8 w-[40rem] bg-white rounded-xl shadow-custom">
+  <h1 class="text-3xl font-bold">Welcom to funeral app</h1>
+  
+  <form
+    class="flex flex-col gap-2"
+    #form="ngForm"
+    (ngSubmit)="_onSubmit(form)"
+  >
+    <mat-form-field>
+      <mat-label for="email">Email</mat-label>
+      <input
+        matInput
+        type="text"
+        name="email"
+        id="email"
+        ngModel
+        email
+        #email="ngModel"
+      />
+  
+      @if (email.touched && email.dirty && email.invalid) {
+        <mat-error>Is not valid email address.</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label for="password">Password</mat-label>
+      <input
+        matInput
+        type="password"
+        name="password"
+        id="password"
+        ngModel
+        required
+        minlength="6"
+        #password="ngModel"
+      />
+  
+      @if (password.touched && password.dirty && password.invalid) {
+        <mat-error>The password must be at least 6 characters.</mat-error>
+      }
+    </mat-form-field>
+
+    <button class="mat-raised-button primary-button" mat-fab extended>
+      Login
+    </button>
+  </form>
+</div>
